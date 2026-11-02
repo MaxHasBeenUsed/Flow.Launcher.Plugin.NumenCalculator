@@ -1,0 +1,112 @@
+<UserControl x:Class="Flow.Launcher.Plugin.NumenCalculator.SettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             MinWidth="380">
+    <StackPanel Margin="16" MaxWidth="620" HorizontalAlignment="Left">
+
+            <TextBlock x:Name="NumberFormatLabel" FontWeight="SemiBold" Margin="0,0,0,4" />
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="0,0,16,0">
+                    <TextBlock x:Name="DecimalSeparatorLabel" Margin="0,0,0,4" />
+                    <TextBox x:Name="DecimalSeparatorBox" Width="90"
+                             LostFocus="SeparatorBox_LostFocus" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock x:Name="GroupSeparatorLabel" Margin="0,0,0,4" />
+                    <TextBox x:Name="GroupSeparatorBox" Width="90"
+                             LostFocus="SeparatorBox_LostFocus" />
+                </StackPanel>
+            </StackPanel>
+            <Grid x:Name="NumberFormatHelp" Margin="0,4,0,16" Opacity="0.7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="NumberFormatHintLabel" Grid.Row="0" Grid.ColumnSpan="3"
+                           Margin="0,0,0,2" />
+                <TextBlock x:Name="DecimalHintLabel" Grid.Row="1" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text=":" Margin="4,0,8,0" />
+                <TextBlock x:Name="DecimalHintValue" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" />
+                <TextBlock x:Name="GroupHintLabel" Grid.Row="2" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Text=":" Margin="4,0,8,0" />
+                <TextBlock x:Name="GroupHintValue" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" />
+                <TextBlock x:Name="NumberFormatFooter" Grid.Row="3" Grid.ColumnSpan="3"
+                           Margin="0,4,0,0" TextWrapping="Wrap" />
+            </Grid>
+
+            <TextBlock x:Name="DateFormatLabel" FontWeight="SemiBold" Margin="0,0,0,4" />
+            <TextBox x:Name="DateFormatBox" MinWidth="340"
+                     LostFocus="DateFormatBox_LostFocus" />
+            <Grid x:Name="DateFormatHelp" Margin="0,4,0,16" Opacity="0.7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="DateFormatHintLabel" Grid.Row="0" Grid.ColumnSpan="3"
+                           Margin="0,0,0,2" />
+
+                <TextBlock Grid.Row="1" Text="iso" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="→" Margin="8,0" />
+                <TextBlock x:Name="DateFormatIsoExample" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" />
+
+                <TextBlock x:Name="DateExamplePattern1" Grid.Row="2" Text="yyyy-MM-dd HH:mm:ss" />
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="→" Margin="8,0" />
+                <TextBlock x:Name="DateExampleOutput1" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" />
+
+                <TextBlock x:Name="DateExamplePattern2" Grid.Row="3" Text="ddd/MM/yyyy hh:mm tt" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="→" Margin="8,0" />
+                <TextBlock x:Name="DateExampleOutput2" Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" />
+
+                <TextBlock x:Name="DateExamplePattern3" Grid.Row="4" Text="ddd, dd MMM yyyy" />
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="→" Margin="8,0" />
+                <TextBlock x:Name="DateExampleOutput3" Grid.Row="4" Grid.Column="2" TextWrapping="Wrap" />
+
+                <TextBlock x:Name="DateFormatFooter" Grid.Row="5" Grid.ColumnSpan="3"
+                           Margin="0,4,0,0" TextWrapping="Wrap" />
+            </Grid>
+
+            <TextBlock x:Name="TimezoneLabel" FontWeight="SemiBold" Margin="0,0,0,4" />
+            <ComboBox x:Name="TimezoneBox" MinWidth="340"
+                      SelectionChanged="TimezoneBox_SelectionChanged" />
+            <TextBlock x:Name="TimezoneHelp" TextWrapping="Wrap" Opacity="0.7" Margin="0,4,0,16" />
+
+            <CheckBox x:Name="ImplicitCurrencyBox" Margin="0,0,0,6"
+                      Checked="ConversionBox_Changed" Unchecked="ConversionBox_Changed" />
+            <CheckBox x:Name="ImplicitUnitBox" Margin="0,0,0,6"
+                      Checked="ConversionBox_Changed" Unchecked="ConversionBox_Changed" />
+            <CheckBox x:Name="ImplicitTimezoneBox" Margin="0,0,0,6"
+                      Checked="ConversionBox_Changed" Unchecked="ConversionBox_Changed" />
+            <CheckBox x:Name="RefreshOnStartupBox" Margin="0,0,0,16"
+                      Checked="ConversionBox_Changed" Unchecked="ConversionBox_Changed" />
+
+            <TextBlock x:Name="EndpointLabel" FontWeight="SemiBold" Margin="0,0,0,4" />
+            <TextBox x:Name="EndpointBox" MinWidth="340"
+                     LostFocus="EndpointBox_LostFocus" />
+            <TextBlock x:Name="EndpointHelp" TextWrapping="Wrap" Opacity="0.7" Margin="0,4,0,12" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                <Button x:Name="RefreshButton" MinWidth="120" Click="RefreshButton_Click" />
+                <TextBlock x:Name="RefreshStatusText" VerticalAlignment="Center" Margin="12,0,0,0"
+                           TextWrapping="Wrap" MaxWidth="420" />
+            </StackPanel>
+
+        </StackPanel>
+</UserControl>

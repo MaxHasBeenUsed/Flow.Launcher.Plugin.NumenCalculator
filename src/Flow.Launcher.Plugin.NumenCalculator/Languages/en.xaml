@@ -1,0 +1,50 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_plugin_name">Numen Calculator</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_plugin_description">Natural-language calculator backed by libnumen: arithmetic, units, currencies, date-times, durations and conversions.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_expression_hint">Expression hint:</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_number_format">Number format</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_decimal_separator">Decimal mark</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_group_separator">Thousands mark</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_decimal_accepts">"." or ","</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_group_accepts">"," or "." or space</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_number_format_footer">Leave both blank to use the system format.</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_number_format_invalid">Supported pairs are "." with ",", "," with ".", and "," with a space. Leave both fields empty to use the system format.</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_date_format">Date format</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_date_format_iso_example">2026-10-02 14:23:00 (Asia/Hong_Kong)</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_date_format_footer">Leave blank to use the system format.</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_date_format_invalid">Use "local", "iso", or a valid .NET date pattern of at most 64 characters with no line breaks.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_timezone">Timezone</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_timezone_system">System default</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_timezone_help">Used for date and time expressions.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_implicit_currency">Implicit currency conversion</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_implicit_unit">Implicit unit conversion</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_implicit_timezone">Implicit timezone conversion</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_refresh_on_startup">Refresh currency rates on startup</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_rate_endpoint">Currency rate endpoint</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_rate_endpoint_help">Absolute http(s) URL for Numen-compatible rates.</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_refresh_now">Refresh now</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_refresh_running">Refreshing…</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_refresh_updated">Updated {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_refresh_failed">Refresh failed: {0}</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_refresh_failed_unknown">Refresh failed.</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_endpoint_invalid">The rate endpoint must be an absolute http or https URL.</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_settings_error_title">Numen Calculator settings</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_context_copy_answer">Copy answer</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_context_copy_unformatted_answer">Copy unformatted answer</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_context_copy_expression">Copy expression</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_context_copy_expression_and_answer">Copy expression and answer</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_context_copy_unit">Copy unit</system:String>
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_context_copy_failed">The value could not be copied to the clipboard.</system:String>
+
+    <system:String x:Key="flowlauncher_plugin_numen_calculator_error_init">Numen Calculator could not start. Calculations and currency rates are unavailable until Flow Launcher is restarted. See the Flow Launcher log for details.</system:String>
+
+</ResourceDictionary>

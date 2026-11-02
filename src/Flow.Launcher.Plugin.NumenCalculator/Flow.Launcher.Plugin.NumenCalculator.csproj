@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Flow.Launcher.Plugin.NumenCalculator</AssemblyName>
+    <RootNamespace>Flow.Launcher.Plugin.NumenCalculator</RootNamespace>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <PublishSingleFile>false</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Version>0.1.0</Version>
+    <NativeDllPath Condition="'$(NativeDllPath)' == ''">$(MSBuildThisFileDirectory)..\..\native\build\$(Configuration)\numen_c.dll</NativeDllPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Flow.Launcher.Plugin" Version="5.3.2"
+                      PrivateAssets="all" ExcludeAssets="runtime" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="plugin.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Include="..\..\THIRD-PARTY-NOTICES.md" Link="THIRD-PARTY-NOTICES.md"
+          CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Include="$(NativeDllPath)" Link="numen_c.dll" Condition="Exists('$(NativeDllPath)')"
+          CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Update="Images\calculator.png" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Page Remove="Languages\en.xaml" />
+    <None Include="Languages\en.xaml" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="EnsureNativeDll" BeforeTargets="Publish" Condition="!Exists('$(NativeDllPath)')">
+    <Error Text="numen_c.dll not found at $(NativeDllPath). Run .\build.ps1 first." />
+  </Target>
+</Project>

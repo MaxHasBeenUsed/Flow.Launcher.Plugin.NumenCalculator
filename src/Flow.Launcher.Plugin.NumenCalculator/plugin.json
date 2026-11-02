@@ -1,0 +1,11 @@
+{
+  "ID": "4C0E3B7A-9D2F-4B61-8E5C-1F7A2D9B6C30",
+  "ActionKeyword": "*",
+  "Name": "Numen Calculator",
+  "Description": "Natural-language calculator backed by libnumen: arithmetic, units, currencies, date-times, durations and conversions.",
+  "Author": "personal",
+  "Version": "0.1.0",
+  "Language": "csharp",
+  "ExecuteFileName": "Flow.Launcher.Plugin.NumenCalculator.dll",
+  "IcoPath": "Images\\calculator.png"
+}
