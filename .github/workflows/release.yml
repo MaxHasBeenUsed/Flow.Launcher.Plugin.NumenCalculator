@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    concurrency:
+      group: release
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Read version
+        id: version
+        shell: pwsh
+        run: |
+          $manifest = Get-Content src/Flow.Launcher.Plugin.NumenCalculator/plugin.json -Raw | ConvertFrom-Json
+          if ([string]::IsNullOrWhiteSpace($manifest.Version)) { throw 'plugin.json has no Version.' }
+          "version=$($manifest.Version)" >> $env:GITHUB_OUTPUT
+          "tag=v$($manifest.Version)" >> $env:GITHUB_OUTPUT
+
+      - name: Build
+        shell: pwsh
+        run: ./build.ps1
+
+      - name: Package
+        id: package
+        shell: pwsh
+        run: |
+          $zip = "NumenCalculator-${{ steps.version.outputs.version }}.zip"
+          Compress-Archive -Path artifacts/publish/* -DestinationPath $zip
+          "zip=$zip" >> $env:GITHUB_OUTPUT
+
+      - name: Publish release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ZIP: ${{ steps.package.outputs.zip }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          gh release create $env:TAG $env:ZIP `
+            --title "Numen Calculator $env:TAG" `
+            --generate-notes `
+            --fail-on-no-commits `
